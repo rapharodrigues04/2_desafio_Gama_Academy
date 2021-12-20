@@ -44,12 +44,40 @@ const saveClient = () => {
     const client = {
       nome: document.getElementById('recipient-name').value,
       imagem: document.getElementById('exampleFormControlFile1').value,
-      descrição: document.getElementById('recipient-name').value,
+      descrição: document.getElementById('recipient-').value
     }
     createClient(client)
+    updateTable()
     clearFields()
   }
 }
+
+const createRow = (client) =>{
+  const newRow = document.createElement('tr')
+  newRow.innerHTML = `
+  <td>${client.nome}</td>
+  <td>${client.imagem}</td>
+  <td>${client.descrição}</td>
+  <td>
+    <button class="btn btn-secondary m-1">editar</button>
+    <button class="btn btn-danger m-1">excluir</button>
+  </td>
+  `
+  document.querySelector('#tableClient>tbody').appendChild(newRow)
+}
+
+const clearTable = () => {
+  const rows = document.querySelectorAll('#tableClient>tbody tr')
+  rows.forEach(row => row.parentNode.removeChild(row))
+}
+
+const updateTable = () =>{
+  const db_client = readClient()
+  clearTable()
+  db_client.forEach(createRow)
+}
+
+updateTable()
 
 //Capturar botão Cadastro de Cliente
 document.querySelector('#btnSalvar')
