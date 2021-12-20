@@ -44,7 +44,7 @@ const saveClient = () => {
     const client = {
       nome: document.getElementById('recipient-name').value,
       imagem: document.getElementById('exampleFormControlFile1').value,
-      descrição: document.getElementById('recipient-').value
+      descrição: document.getElementById('recipient-descricao').value,
     }
     createClient(client)
     updateTable()
