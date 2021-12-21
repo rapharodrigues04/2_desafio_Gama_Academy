@@ -52,15 +52,15 @@ const saveClient = () => {
   }
 }
 
-const createRow = (client) =>{
+const createRow = (client, index) =>{
   const newRow = document.createElement('tr')
   newRow.innerHTML = `
   <td>${client.nome}</td>
   <td>${client.imagem}</td>
   <td>${client.descrição}</td>
   <td>
-    <button class="btn btn-secondary m-1">editar</button>
-    <button class="btn btn-danger m-1">excluir</button>
+    <button class="btn btn-secondary m-1" id="editar-${index}">editar</button>
+    <button class="btn btn-danger m-1" id="delete-${index}">excluir</button>
   </td>
   `
   document.querySelector('#tableClient>tbody').appendChild(newRow)
@@ -77,8 +77,35 @@ const updateTable = () =>{
   db_client.forEach(createRow)
 }
 
+const fillFields = (client) =>{
+  document.getElementById('nome').value = client.nome
+  document.getElementById('imagem').value = client.imagem
+  document.getElementById('descricao').value = client.descrição
+}
+
+const editClient = (index) => {
+  const client =readClient()[index]
+  fillFields(client)
+}
+
+const editDelete = (event) =>{
+  if(event.target.type == 'submit'){
+
+    const [action, index] = event.target.id.split('-')
+
+    if(action == 'edit') {
+      editClient(index)      
+    } else {
+      console.log ('deletando o cliente')
+    }
+  }
+}
+
 updateTable()
 
 //Capturar botão Cadastro de Cliente
 document.querySelector('#btnSalvar')
   .addEventListener('click', saveClient)
+
+document.querySelector('#tableClient>tbody')
+  .addEventListener('click', editDelete)
