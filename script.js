@@ -59,7 +59,7 @@ const createRow = (client, index) =>{
   <td>${client.imagem}</td>
   <td>${client.descrição}</td>
   <td>
-    <button class="btn btn-secondary m-1" id="editar-${index}">editar</button>
+    <button class="btn btn-secondary m-1" id="edit-${index}">editar</button>
     <button class="btn btn-danger m-1" id="delete-${index}">excluir</button>
   </td>
   `
@@ -78,26 +78,32 @@ const updateTable = () =>{
 }
 
 const fillFields = (client) =>{
-  document.getElementById('nome').value = client.nome
-  document.getElementById('imagem').value = client.imagem
-  document.getElementById('descricao').value = client.descrição
+  document.getElementById('recipient-name').value = client.nome
+  document.getElementById('exampleFormControlFile1').value = client.imagem
+  document.getElementById('recipient-descricao').value = client.descrição
 }
 
 const editClient = (index) => {
-  const client =readClient()[index]
+  const client = readClient()[index]
+  client.index = index
   fillFields(client)
 }
 
-const editDelete = (event) =>{
-  if(event.target.type == 'submit'){
+const editDelete = (event) => {
+  if (event.target.type == 'submit') {
 
-    const [action, index] = event.target.id.split('-')
+      const [action, index] = event.target.id.split('-')
 
-    if(action == 'edit') {
-      editClient(index)      
-    } else {
-      console.log ('deletando o cliente')
-    }
+      if (action == 'edit') {
+          editClient(index)
+      } else {
+          const client = readClient()[index]
+          const response = confirm(`Deseja realmente excluir o curso ${client.nome}`)
+          if (response) {
+              deleteClient(index)
+              updateTable()
+          }
+      }
   }
 }
 
