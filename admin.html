@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col">
           <h3>Serviços</h3>
-          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Adicionar
+          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Adicionar
             novo</button>
           <table id="tableClient" class="table my-5">
             <thead>
@@ -38,13 +38,13 @@
               </tr>
             </thead>
             <tbody>
-              <!--<tr>
+              <tr>
                 <td>Desenvolvimento Web</td>
                 <td><img src="imagens/ilustra-web.png" class="img-fluid" /></td>
                 <td>Consequatur debitis ipsa numquam illum placeat quod deleniti.</td>
                 <td>
-                  <button class="btn btn-secondary m-1">editar</button>
-                  <button class="btn btn-danger m-1">excluir</button>
+                  <button class="btn btn-secondary m-1">Editar</button>
+                  <button class="btn btn-danger m-1">Excluir</button>
                 </td>
               </tr>
               <tr>
@@ -52,8 +52,8 @@
                 <td><img src="imagens/ilustra-marketing.png" class="img-fluid" /></td>
                 <td>Consequatur debitis ipsa numquam illum placeat quod deleniti.</td>
                 <td>
-                  <button class="btn btn-secondary m-1">editar</button>
-                  <button class="btn btn-danger m-1">excluir</button>
+                  <button class="btn btn-secondary m-1">Editar</button>
+                  <button class="btn btn-danger m-1">Excluir</button>
                 </td>
               </tr>
               <tr>
@@ -61,10 +61,10 @@
                 <td><img src="imagens/ilustra-ux.png" class="img-fluid" /></td>
                 <td>Consequatur debitis ipsa numquam illum placeat quod deleniti.</td>
                 <td>
-                  <button class="btn btn-secondary m-1">editar</button>
-                  <button class="btn btn-danger m-1">excluir</button>
+                  <button class="btn btn-secondary m-1">Editar</button>
+                  <button class="btn btn-danger m-1">Excluir</button>
                 </td>
-              </tr>-->
+              </tr>
             </tbody>
           </table>
         </div>
@@ -78,15 +78,15 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Adicionar Novo Curso</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
+          <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span onclick="clearFields()" aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form id="form">
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Nome:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <input type="text" data-index="new" class="form-control" id="recipient-name">
             </div>
             <div class="form-group">
               <label for="exampleFormControlFile1">Imagem:</label>
@@ -99,7 +99,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button id="btnCancelar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button onclick="clearFields()" id="btnCancelar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           <button id="btnSalvar" type="button" class="btn btn-primary">Salvar</button>
         </div>
       </div>
@@ -117,13 +117,13 @@
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="./script.js"></script>
 </body>
 
